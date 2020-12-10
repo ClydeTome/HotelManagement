@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             DialogResult ex = MessageBox.Show("Are You Sure you want to Exit Application?","Warning",MessageBoxButtons.YesNo);
             if (ex == DialogResult.Yes)
             {
-                System.Environment.Exit(0);
+                Application.Exit();
             }
             
 
