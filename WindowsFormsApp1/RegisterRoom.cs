@@ -18,11 +18,11 @@ namespace WindowsFormsApp1
             InitializeComponent();
             FillCombo();
         }
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-40PIGQM;Initial Catalog=HotelReservation;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2BAN13A\SQLEXPRESS;Initial Catalog=HotelReservation;Integrated Security=True");
 
         void FillCombo()
         {
-            string query = "SELECT RoomType FROM RegisterRoomTable";
+            /**string query = "SELECT RoomType FROM RegisterRoomTable";
             SqlCommand cmddb = new SqlCommand(query, conn);
             SqlDataReader mreader;
             try
@@ -39,13 +39,30 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
+            **/
+            SqlCommand comm = new SqlCommand();
+            comm.CommandText = "select RoomType from RegisterRoomTable";
+            comm.Connection = conn;
+
+            conn.Open();
+            SqlDataReader sdr = comm.ExecuteReader();
+            while (sdr.Read())
+            {
+                if (regcb1.Items.ToString().Contains(regcb1.Items.ToString()))
+                {
+                    regcb1.Items.Add(sdr["RoomType"]);
+                }
+                
+            }
+            sdr.Close();
+            conn.Close();
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
         }
 
         private void RegisterRoom_Load(object sender, EventArgs e)
-        {
+        {/**
             regview1.GridLines = true;
             regview1.View = View.Details;
 
@@ -53,6 +70,7 @@ namespace WindowsFormsApp1
             regview1.Columns.Add("RoomName", 150);
             regview1.Columns.Add("RoomType", 150);
             regview1.Columns.Add("RoomRate", 150);
+            **/
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -79,15 +97,42 @@ namespace WindowsFormsApp1
 
         private void regbtn1_Click(object sender, EventArgs e)
         {
-            string insertQuery = "INSERT INTO RegisterRoomTable VALUES('" + regtxt1.Text.Trim() + "','" + regtxt2.Text.Trim() + "','" + regtxt3.Text.Trim() +
-                "','"+regtxt4.Text+"');";
+            string insertQuery = 
+                "INSERT INTO RegisterRoomTable VALUES('" + regtxt1.Text.Trim()
+                + "','" + regtxt2.Text.Trim() + "','" + regtxt3.Text.Trim()
+                +"','"+regtxt4.Text+"');";
             conn.Open();
             SqlCommand cmd = new SqlCommand(insertQuery, conn);
             try
             {
-                if (cmd.ExecuteNonQuery() == 1)
+                if (!regtxt1.Text.Equals("") && !regtxt2.Text.Equals("") && !regtxt3.Text.Equals("") && !regtxt4.Text.Equals(""))
                 {
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Data Inserted");
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select * from RegisterRoomTable";
+                    comm.Connection = conn;
+
+                    DataSet dataset = new DataSet();
+                    SqlDataAdapter sda = new SqlDataAdapter(comm);
+                    sda.Fill(dataset);
+
+                    regview1.DataSource = dataset.Tables[0];
+
+                    /**DataTable dt;
+                    dt = ds.Tables["Table"];
+                    int i;
+                    for (i = 0; i <= dt.Rows.Count - 1; i++)
+                    {
+                        regview1.Items.Add(dt.Rows[i].ItemArray[0].ToString());
+                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[1].ToString());
+                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[2].ToString());
+                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[3].ToString());
+                    }**/
+                    regtxt1.Text = "";
+                    regtxt2.Text = "";
+                    regtxt3.Text = "";
+                    regtxt4.Text = "";
                 }
                 else
                 {
@@ -99,10 +144,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
-           
-
+            FillCombo();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string insertQuery ="TRUNCATE TABLE RegisterRoomTable;";
@@ -131,7 +174,7 @@ namespace WindowsFormsApp1
 
         private void regbtnref_Click(object sender, EventArgs e)
         {
-            conn.Open();
+            /**conn.Open();
             SqlCommand cmd = new SqlCommand("SELECT * FROM RegisterRoomTable", conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -148,7 +191,20 @@ namespace WindowsFormsApp1
                 regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[2].ToString());
                 regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[3].ToString());
             }
+            **/
+        }
 
+        private void regcb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlCommand comm = new SqlCommand();
+            comm.CommandText = "select * from RegisterRoomTable where RoomType='"+regcb1.SelectedItem.ToString()+"'";
+            comm.Connection = conn;
+
+            DataSet dataset = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(comm);
+            sda.Fill(dataset);
+
+            regview1.DataSource = dataset.Tables[0];
         }
     }
 }

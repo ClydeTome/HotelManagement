@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             this.Hide();
             RegisterRoom rg = new RegisterRoom();
             rg.Show();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

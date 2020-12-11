@@ -41,13 +41,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.regbtnref = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.regview1 = new System.Windows.Forms.ListView();
             this.regcb1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.regbt2 = new System.Windows.Forms.Button();
             this.prgbtn = new System.Windows.Forms.Button();
+            this.regview1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.regview1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -143,9 +144,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.regview1);
             this.panel1.Controls.Add(this.regbtnref);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.regview1);
             this.panel1.Controls.Add(this.regcb1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(453, 58);
@@ -173,15 +174,6 @@
             this.label8.Text = "Room List";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // regview1
-            // 
-            this.regview1.HideSelection = false;
-            this.regview1.Location = new System.Drawing.Point(9, 116);
-            this.regview1.Name = "regview1";
-            this.regview1.Size = new System.Drawing.Size(747, 304);
-            this.regview1.TabIndex = 2;
-            this.regview1.UseCompatibleStateImageBehavior = false;
-            // 
             // regcb1
             // 
             this.regcb1.FormattingEnabled = true;
@@ -189,6 +181,7 @@
             this.regcb1.Name = "regcb1";
             this.regcb1.Size = new System.Drawing.Size(166, 21);
             this.regcb1.TabIndex = 1;
+            this.regcb1.SelectedIndexChanged += new System.EventHandler(this.regcb1_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -229,6 +222,14 @@
             this.prgbtn.UseVisualStyleBackColor = true;
             this.prgbtn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // regview1
+            // 
+            this.regview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.regview1.Location = new System.Drawing.Point(12, 128);
+            this.regview1.Name = "regview1";
+            this.regview1.Size = new System.Drawing.Size(703, 291);
+            this.regview1.TabIndex = 5;
+            // 
             // RegisterRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +255,7 @@
             this.Load += new System.EventHandler(this.RegisterRoom_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.regview1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,11 +276,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListView regview1;
         private System.Windows.Forms.ComboBox regcb1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button regbt2;
         private System.Windows.Forms.Button prgbtn;
         private System.Windows.Forms.Button regbtnref;
+        private System.Windows.Forms.DataGridView regview1;
     }
 }
