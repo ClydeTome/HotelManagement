@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,46 @@ namespace WindowsFormsApp1
         public Form2()
         {
             InitializeComponent();
+        }
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2BAN13A\SQLEXPRESS;Initial Catalog=HotelReservation;Integrated Security=True");
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterRoom rg = new RegisterRoom();
+            rg.Show();         
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Amedities amed = new Amedities();
+            amed.Show();
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            Form1 login = new Form1();
+            login.Show();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RoomRates rr = new RoomRates();
+            rr.Show();
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            DialogResult ex = MessageBox.Show("Are You Sure you want to Exit Application?","Warning",MessageBoxButtons.YesNo);
+            if (ex == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 frm3 = new Form3();
+            frm3.Show();
         }
     }
 }

@@ -17,45 +17,32 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             FillCombo();
+            FillGrid();
         }
         SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2BAN13A\SQLEXPRESS;Initial Catalog=HotelReservation;Integrated Security=True");
-
+        
+        
         void FillCombo()
         {
-            /**string query = "SELECT RoomType FROM RegisterRoomTable";
-            SqlCommand cmddb = new SqlCommand(query, conn);
-            SqlDataReader mreader;
-            try
-            {
-                conn.Open();
-                mreader = cmddb.ExecuteReader();
-                while (mreader.Read())
-                {
-                    string SRType = mreader["RoomType"].ToString();
-                    regcb1.Items.Add(SRType);
-                }
-            }
-            catch(Exception ex){
-                MessageBox.Show(ex.Message);
-            }
-            conn.Close();
-            **/
-            SqlCommand comm = new SqlCommand();
-            comm.CommandText = "select RoomType from RegisterRoomTable";
-            comm.Connection = conn;
-
+            SqlCommand comm = new SqlCommand("select RoomType from RegisterRoomTable", conn);
+            SqlCommand count = new SqlCommand("select count(RoomType) from RegisterRoomTable", conn);
             conn.Open();
             SqlDataReader sdr = comm.ExecuteReader();
+            // Adding elements in the combobox
             while (sdr.Read())
             {
-                if (regcb1.Items.ToString().Contains(regcb1.Items.ToString()))
-                {
-                    regcb1.Items.Add(sdr["RoomType"]);
-                }
-                
+                regcb1.Items.Add(sdr["RoomType"]);
             }
             sdr.Close();
             conn.Close();
+        }
+        public void FillGrid()
+        {
+            SqlCommand comm = new SqlCommand("select * from RegisterRoomTable", conn);
+            DataSet dataset = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(comm);
+            sda.Fill(dataset);
+            regview1.DataSource = dataset.Tables[0];
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -109,26 +96,11 @@ namespace WindowsFormsApp1
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data Inserted");
-                    SqlCommand comm = new SqlCommand();
-                    comm.CommandText = "select * from RegisterRoomTable";
-                    comm.Connection = conn;
-
+                    SqlCommand comm = new SqlCommand("select * from RegisterRoomTable", conn);
                     DataSet dataset = new DataSet();
                     SqlDataAdapter sda = new SqlDataAdapter(comm);
                     sda.Fill(dataset);
-
                     regview1.DataSource = dataset.Tables[0];
-
-                    /**DataTable dt;
-                    dt = ds.Tables["Table"];
-                    int i;
-                    for (i = 0; i <= dt.Rows.Count - 1; i++)
-                    {
-                        regview1.Items.Add(dt.Rows[i].ItemArray[0].ToString());
-                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[1].ToString());
-                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[2].ToString());
-                        regview1.Items[i].SubItems.Add(dt.Rows[i].ItemArray[3].ToString());
-                    }**/
                     regtxt1.Text = "";
                     regtxt2.Text = "";
                     regtxt3.Text = "";
