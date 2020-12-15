@@ -16,45 +16,5 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegisterRoom rg = new RegisterRoom();
-            rg.Show();
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Amedities amed = new Amedities();
-            amed.Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-            Form1 login = new Form1();
-            login.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RoomRates rr = new RoomRates();
-            rr.Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            DialogResult ex = MessageBox.Show("Are You Sure you want to Exit Application?","Warning",MessageBoxButtons.YesNo);
-            if (ex == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            
-
-        }
     }
 }
