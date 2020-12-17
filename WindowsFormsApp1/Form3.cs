@@ -15,8 +15,9 @@ namespace WindowsFormsApp1
     {
         public Form3()
         {
-            FillGrid();
+            
             InitializeComponent();
+            FillGrid();
         }
         SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2BAN13A\SQLEXPRESS;Initial Catalog=HotelReservation;Integrated Security=True");
         public void FillGrid()

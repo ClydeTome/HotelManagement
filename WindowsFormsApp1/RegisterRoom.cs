@@ -18,15 +18,16 @@ namespace WindowsFormsApp1
             InitializeComponent();
             FillCombo();
             FillGrid();
+
         }
         SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2BAN13A\SQLEXPRESS;Initial Catalog=HotelReservation;Integrated Security=True");
         
         
         void FillCombo()
         {
+            conn.Open();
             SqlCommand comm = new SqlCommand("select RoomType from RegisterRoomTable", conn);
             SqlCommand count = new SqlCommand("select count(RoomType) from RegisterRoomTable", conn);
-            conn.Open();
             SqlDataReader sdr = comm.ExecuteReader();
             // Adding elements in the combobox
             while (sdr.Read())
@@ -43,6 +44,12 @@ namespace WindowsFormsApp1
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             sda.Fill(dataset);
             regview1.DataSource = dataset.Tables[0];
+
+            SqlCommand comm2 = new SqlCommand("select * from Amedities", conn);
+            DataSet dataset2 = new DataSet();
+            SqlDataAdapter sda2 = new SqlDataAdapter(comm2);
+            sda2.Fill(dataset2);
+            AmeditiesGrid.DataSource = dataset2.Tables[0];
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -100,11 +107,7 @@ namespace WindowsFormsApp1
                     DataSet dataset = new DataSet();
                     SqlDataAdapter sda = new SqlDataAdapter(comm);
                     sda.Fill(dataset);
-                    regview1.DataSource = dataset.Tables[0];
-                    regtxt1.Text = "";
-                    regtxt2.Text = "";
-                    regtxt3.Text = "";
-                    regtxt4.Text = "";
+                    regview1.DataSource = dataset.Tables[0];        
                 }
                 else
                 {
@@ -116,7 +119,14 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
-            FillCombo();
+            if (!regtxt1.Text.Equals("") && !regtxt2.Text.Equals("") && !regtxt3.Text.Equals("") && !regtxt4.Text.Equals(""))
+            {
+                FillCombo();
+                regtxt1.Text = "";
+                regtxt2.Text = "";
+                regtxt3.Text = "";
+                regtxt4.Text = "";
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -171,12 +181,42 @@ namespace WindowsFormsApp1
             SqlCommand comm = new SqlCommand();
             comm.CommandText = "select * from RegisterRoomTable where RoomType='"+regcb1.SelectedItem.ToString()+"'";
             comm.Connection = conn;
-
             DataSet dataset = new DataSet();
             SqlDataAdapter sda = new SqlDataAdapter(comm);
             sda.Fill(dataset);
-
             regview1.DataSource = dataset.Tables[0];
+        }
+
+        private void btnAme_Click(object sender, EventArgs e)
+        {
+            string insertQuery =
+                "INSERT INTO Amedities VALUES('" +txtAmeID.Text.Trim()+
+                "','" +txtAmeName.Text.Trim()+ "','" +txtAmePrice.Text.Trim()+
+                "');";
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(insertQuery, conn);
+            try
+            {
+                if (!txtAmeID.Text.Equals("") && !txtAmeName.Text.Equals("") && !txtAmePrice.Text.Equals(""))
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data Inserted");
+                    SqlCommand comm = new SqlCommand("select * from Amedities", conn);
+                    DataSet dataset = new DataSet();
+                    SqlDataAdapter sda = new SqlDataAdapter(comm);
+                    sda.Fill(dataset);
+                    AmeditiesGrid.DataSource = dataset.Tables[0];
+                }
+                else
+                {
+                    MessageBox.Show("Data Not Inserted");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
         }
     }
 }

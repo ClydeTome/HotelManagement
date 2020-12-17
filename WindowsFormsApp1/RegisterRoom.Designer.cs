@@ -39,6 +39,7 @@
             this.regtxt4 = new System.Windows.Forms.TextBox();
             this.regbtn1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.regview1 = new System.Windows.Forms.DataGridView();
             this.regbtnref = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.regcb1 = new System.Windows.Forms.ComboBox();
@@ -46,9 +47,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.regbt2 = new System.Windows.Forms.Button();
             this.prgbtn = new System.Windows.Forms.Button();
-            this.regview1 = new System.Windows.Forms.DataGridView();
+            this.AmeditiesGrid = new System.Windows.Forms.DataGridView();
+            this.txtAmeID = new System.Windows.Forms.TextBox();
+            this.txtAmeName = new System.Windows.Forms.TextBox();
+            this.btnAme = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtAmePrice = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regview1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmeditiesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,15 +153,24 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.AmeditiesGrid);
             this.panel1.Controls.Add(this.regview1);
             this.panel1.Controls.Add(this.regbtnref);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.regcb1);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(453, 58);
+            this.panel1.Location = new System.Drawing.Point(346, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(769, 592);
+            this.panel1.Size = new System.Drawing.Size(723, 436);
             this.panel1.TabIndex = 13;
+            // 
+            // regview1
+            // 
+            this.regview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.regview1.Location = new System.Drawing.Point(12, 128);
+            this.regview1.Name = "regview1";
+            this.regview1.Size = new System.Drawing.Size(382, 291);
+            this.regview1.TabIndex = 5;
             // 
             // regbtnref
             // 
@@ -204,9 +222,9 @@
             // 
             // regbt2
             // 
-            this.regbt2.Location = new System.Drawing.Point(58, 614);
+            this.regbt2.Location = new System.Drawing.Point(58, 369);
             this.regbt2.Name = "regbt2";
-            this.regbt2.Size = new System.Drawing.Size(75, 23);
+            this.regbt2.Size = new System.Drawing.Size(91, 38);
             this.regbt2.TabIndex = 15;
             this.regbt2.Text = "Return";
             this.regbt2.UseVisualStyleBackColor = true;
@@ -214,21 +232,79 @@
             // 
             // prgbtn
             // 
-            this.prgbtn.Location = new System.Drawing.Point(264, 614);
+            this.prgbtn.Location = new System.Drawing.Point(155, 325);
             this.prgbtn.Name = "prgbtn";
-            this.prgbtn.Size = new System.Drawing.Size(75, 23);
+            this.prgbtn.Size = new System.Drawing.Size(89, 38);
             this.prgbtn.TabIndex = 16;
             this.prgbtn.Text = "Purge Table";
             this.prgbtn.UseVisualStyleBackColor = true;
             this.prgbtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // regview1
+            // AmeditiesGrid
             // 
-            this.regview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.regview1.Location = new System.Drawing.Point(12, 128);
-            this.regview1.Name = "regview1";
-            this.regview1.Size = new System.Drawing.Size(703, 291);
-            this.regview1.TabIndex = 5;
+            this.AmeditiesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AmeditiesGrid.Location = new System.Drawing.Point(412, 125);
+            this.AmeditiesGrid.Name = "AmeditiesGrid";
+            this.AmeditiesGrid.Size = new System.Drawing.Size(285, 294);
+            this.AmeditiesGrid.TabIndex = 6;
+            // 
+            // txtAmeID
+            // 
+            this.txtAmeID.Location = new System.Drawing.Point(1088, 183);
+            this.txtAmeID.Name = "txtAmeID";
+            this.txtAmeID.Size = new System.Drawing.Size(137, 20);
+            this.txtAmeID.TabIndex = 17;
+            // 
+            // txtAmeName
+            // 
+            this.txtAmeName.Location = new System.Drawing.Point(1088, 228);
+            this.txtAmeName.Name = "txtAmeName";
+            this.txtAmeName.Size = new System.Drawing.Size(137, 20);
+            this.txtAmeName.TabIndex = 18;
+            // 
+            // btnAme
+            // 
+            this.btnAme.Location = new System.Drawing.Point(1088, 312);
+            this.btnAme.Name = "btnAme";
+            this.btnAme.Size = new System.Drawing.Size(92, 42);
+            this.btnAme.TabIndex = 19;
+            this.btnAme.Text = "Add Amedity";
+            this.btnAme.UseVisualStyleBackColor = true;
+            this.btnAme.Click += new System.EventHandler(this.btnAme_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1085, 167);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Amedity ID";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1085, 212);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Amedity Name";
+            // 
+            // txtAmePrice
+            // 
+            this.txtAmePrice.Location = new System.Drawing.Point(1088, 267);
+            this.txtAmePrice.Name = "txtAmePrice";
+            this.txtAmePrice.Size = new System.Drawing.Size(137, 20);
+            this.txtAmePrice.TabIndex = 22;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1085, 251);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Amedity Price";
             // 
             // RegisterRoom
             // 
@@ -236,6 +312,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtAmePrice);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnAme);
+            this.Controls.Add(this.txtAmeName);
+            this.Controls.Add(this.txtAmeID);
             this.Controls.Add(this.prgbtn);
             this.Controls.Add(this.regbt2);
             this.Controls.Add(this.label6);
@@ -256,6 +339,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.regview1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmeditiesGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +366,13 @@
         private System.Windows.Forms.Button prgbtn;
         private System.Windows.Forms.Button regbtnref;
         private System.Windows.Forms.DataGridView regview1;
+        private System.Windows.Forms.DataGridView AmeditiesGrid;
+        private System.Windows.Forms.TextBox txtAmeID;
+        private System.Windows.Forms.TextBox txtAmeName;
+        private System.Windows.Forms.Button btnAme;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtAmePrice;
+        private System.Windows.Forms.Label label11;
     }
 }
