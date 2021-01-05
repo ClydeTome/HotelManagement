@@ -137,6 +137,7 @@
             this.regtxt4.Name = "regtxt4";
             this.regtxt4.Size = new System.Drawing.Size(166, 20);
             this.regtxt4.TabIndex = 11;
+            this.regtxt4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.regtxt4_KeyPress);
             // 
             // regbtn1
             // 

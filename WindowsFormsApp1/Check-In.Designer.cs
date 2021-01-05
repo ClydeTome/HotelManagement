@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.bttnAddChildren = new System.Windows.Forms.Button();
             this.bttnAddAdult = new System.Windows.Forms.Button();
@@ -51,18 +53,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.checkingrid = new System.Windows.Forms.DataGridView();
-            this.label20 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkingrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkingrid);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.textBox2);
@@ -89,8 +87,22 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 508);
+            this.panel1.Size = new System.Drawing.Size(1217, 508);
             this.panel1.TabIndex = 0;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(187, 302);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 84;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(187, 260);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 83;
             // 
             // textBox2
             // 
@@ -191,17 +203,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(213, 457);
+            this.button2.Location = new System.Drawing.Point(1047, 466);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 23);
             this.button2.TabIndex = 63;
-            this.button2.Text = "Clear";
+            this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(213, 428);
+            this.button1.Location = new System.Drawing.Point(1047, 437);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 23);
             this.button1.TabIndex = 62;
@@ -309,59 +321,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CHECK IN FORM";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.checkingrid);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Location = new System.Drawing.Point(622, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(589, 508);
-            this.panel2.TabIndex = 1;
-            // 
             // checkingrid
             // 
             this.checkingrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkingrid.Location = new System.Drawing.Point(16, 53);
+            this.checkingrid.Location = new System.Drawing.Point(443, 12);
             this.checkingrid.Name = "checkingrid";
-            this.checkingrid.Size = new System.Drawing.Size(555, 245);
-            this.checkingrid.TabIndex = 1;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 12);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(91, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "CHECK IN FORM";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(187, 260);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 83;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(187, 302);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 84;
+            this.checkingrid.Size = new System.Drawing.Size(754, 344);
+            this.checkingrid.TabIndex = 85;
             // 
             // Check_In
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Check_In";
             this.Text = "Check_In";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkingrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -391,11 +368,9 @@
         internal System.Windows.Forms.TextBox txtChildren;
         internal System.Windows.Forms.Label Label12;
         internal System.Windows.Forms.Label Label10;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView checkingrid;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView checkingrid;
     }
 }

@@ -230,5 +230,14 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void regtxt4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Char chr = e.KeyChar;
+            if(!Char.IsDigit(chr)&&chr !=8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

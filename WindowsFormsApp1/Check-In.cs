@@ -18,10 +18,12 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             FillCombo();
+            DataGridUno();
         }
         int adult = 0;
         int child = 0;
-
+        
+      
         void FillCombo()
         {
 
@@ -45,9 +47,22 @@ namespace WindowsFormsApp1
             conn.Close();
         }
 
+        void DataGridUno()
+        {
+            SqlCommand comm = new SqlCommand("select * from CHECKIN", conn);
+            DataSet dataset = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(comm);
+            sda.Fill(dataset);
+            checkingrid.DataSource = dataset.Tables[0];
+            checkingrid.RowTemplate.Height = 20;
+            checkingrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
+
             string insertQuery = "INSERT INTO CHECKIN VALUES ('" + textBox2.Text.Trim() + "','"
                + txtcombo1.Text.Trim() + "','" + textBox1.Text.Trim() + "','" + txtAdults.Text.Trim() + "','" + txtChildren.Text.Trim() + "','" + dateTimePicker1.Text + "','" +
                dateTimePicker2.Text + "','" + txtTotal.Text.Trim() + "');";
@@ -71,12 +86,18 @@ namespace WindowsFormsApp1
             }
             conn.Close();
 
+            DataGridUno();
+
+            
+
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            this.Dispose();
+            Form2 mainform = new Form2();
+            mainform.Show();
         }
 
         private void txtRoomNumber_TextChanged(object sender, EventArgs e)
@@ -109,8 +130,10 @@ namespace WindowsFormsApp1
             {
                 string Tname = (string)dr["RoomID"].ToString();
                 textBox1.Text = Tname;
+               
             }
             conn.Close();
+
         }
 
         private void bttnSubAdult_Click(object sender, EventArgs e)
