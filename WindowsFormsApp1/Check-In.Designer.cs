@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkingrid = new System.Windows.Forms.DataGridView();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -53,13 +54,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkingrid = new System.Windows.Forms.DataGridView();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkingrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.checkingrid);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
@@ -90,12 +94,22 @@
             this.panel1.Size = new System.Drawing.Size(1217, 508);
             this.panel1.TabIndex = 0;
             // 
+            // checkingrid
+            // 
+            this.checkingrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.checkingrid.Location = new System.Drawing.Point(443, 12);
+            this.checkingrid.Name = "checkingrid";
+            this.checkingrid.Size = new System.Drawing.Size(754, 344);
+            this.checkingrid.TabIndex = 85;
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(187, 302);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 84;
+            this.dateTimePicker2.CloseUp += new System.EventHandler(this.dateTimePicker2_CloseUp);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -234,7 +248,7 @@
             // 
             this.txtTotal.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(187, 354);
+            this.txtTotal.Location = new System.Drawing.Point(187, 408);
             this.txtTotal.Multiline = true;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
@@ -252,7 +266,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(87, 359);
+            this.label8.Location = new System.Drawing.Point(87, 413);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 13);
             this.label8.TabIndex = 7;
@@ -321,13 +335,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CHECK IN FORM";
             // 
-            // checkingrid
+            // textBox3
             // 
-            this.checkingrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkingrid.Location = new System.Drawing.Point(443, 12);
-            this.checkingrid.Name = "checkingrid";
-            this.checkingrid.Size = new System.Drawing.Size(754, 344);
-            this.checkingrid.TabIndex = 85;
+            this.textBox3.Location = new System.Drawing.Point(187, 363);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(176, 20);
+            this.textBox3.TabIndex = 86;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(94, 366);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 87;
+            this.label9.Text = "Room Rate";
             // 
             // Check_In
             // 
@@ -372,5 +394,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView checkingrid;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

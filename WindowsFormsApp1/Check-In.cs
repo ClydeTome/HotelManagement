@@ -61,7 +61,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
+          
 
             string insertQuery = "INSERT INTO CHECKIN VALUES ('" + textBox2.Text.Trim() + "','"
                + txtcombo1.Text.Trim() + "','" + textBox1.Text.Trim() + "','" + txtAdults.Text.Trim() + "','" + txtChildren.Text.Trim() + "','" + dateTimePicker1.Text + "','" +
@@ -88,7 +89,10 @@ namespace WindowsFormsApp1
 
             DataGridUno();
 
-            
+            textBox2.Clear();
+            textBox1.Clear();
+            textBox3.Clear();
+            txtTotal.Clear();
 
         }
 
@@ -130,10 +134,49 @@ namespace WindowsFormsApp1
             {
                 string Tname = (string)dr["RoomID"].ToString();
                 textBox1.Text = Tname;
-               
+                string RRate = (string)dr["RoomRate"].ToString();
+                textBox3.Text = RRate;
+                
+                
+
             }
             conn.Close();
+            DateTime startTime = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime endTime = Convert.ToDateTime(dateTimePicker2.Value);
 
+            TimeSpan span = endTime.Subtract(startTime);
+
+            int hoursDifference = span.Hours;
+
+            int rates = int.Parse(textBox3.Text);
+            int totalbal = hoursDifference * rates;
+
+            txtTotal.Text = totalbal.ToString();
+
+
+            /**
+            string sqlQuery2 = "SELECT * FROM RegisterRoomTable WHERE RoomType = '" + txtcombo1.Text + "'";
+            SqlCommand objCommand2 = new SqlCommand(sqlQuery2, conn);
+            conn.Open();
+            SqlDataReader dr2;
+            dr2 = objCommand2.ExecuteReader();
+            while (dr2.Read())
+            {
+                string RRate = (string)dr2["RoomRate"].ToString();
+                textBox3.Text = RRate;
+
+            }
+            conn.Close();
+            DateTime startTime = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime endTime = Convert.ToDateTime(dateTimePicker2.Value);
+
+            TimeSpan span = endTime.Subtract(startTime);
+
+            int hoursDifference = span.Hours;
+
+            int rates = int.Parse(textBox3.Text);
+            int totalbal = hoursDifference * rates;
+            **/
         }
 
         private void bttnSubAdult_Click(object sender, EventArgs e)
@@ -174,6 +217,26 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("cannot have below zero");
             }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dateTimePicker2_CloseUp(object sender, EventArgs e)
+        {
+            DateTime startTime = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime endTime = Convert.ToDateTime(dateTimePicker2.Value);
+
+            TimeSpan span = endTime.Subtract(startTime);
+
+            int hourdiff = Convert.ToInt32(span.Hours);
+
+            int rates = int.Parse(textBox3.Text);
+            int totalbal = hourdiff * rates;
+
+            txtTotal.Text = totalbal.ToString();
         }
     }
 }
