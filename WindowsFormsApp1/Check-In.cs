@@ -47,6 +47,16 @@ namespace WindowsFormsApp1
             conn.Close();
         }
 
+        void Clear_Text()
+        {
+            textBox2.Clear();
+            textBox1.Clear();
+            textBox3.Clear();
+            txtTotal.Clear();
+            txtChildren.Text = "0";
+			txtAdults.Text = "0";
+        }
+
         void DataGridUno()
         {
             SqlCommand comm = new SqlCommand("select * from CHECKIN", conn);
@@ -56,6 +66,15 @@ namespace WindowsFormsApp1
             checkingrid.DataSource = dataset.Tables[0];
             checkingrid.RowTemplate.Height = 20;
             checkingrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
+            SqlCommand comm2 = new SqlCommand("select * from Amedities", conn);
+            DataSet dataset2 = new DataSet();
+            SqlDataAdapter sda2 = new SqlDataAdapter(comm2);
+            sda2.Fill(dataset2);
+            AmeditiesGrid.DataSource = dataset2.Tables[0];
+            AmeditiesGrid.RowTemplate.Height = 20;
+            AmeditiesGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
 
@@ -88,11 +107,9 @@ namespace WindowsFormsApp1
             conn.Close();
 
             DataGridUno();
+            Clear_Text();
 
-            textBox2.Clear();
-            textBox1.Clear();
-            textBox3.Clear();
-            txtTotal.Clear();
+
 
         }
 
@@ -123,7 +140,7 @@ namespace WindowsFormsApp1
 
         private void txtcombo1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            
 
             string sqlQuery = "SELECT * FROM RegisterRoomTable WHERE RoomType = '" + txtcombo1.Text + "'";
             SqlCommand objCommand = new SqlCommand(sqlQuery, conn);
@@ -229,11 +246,12 @@ namespace WindowsFormsApp1
             DateTime startTime = Convert.ToDateTime(dateTimePicker1.Value);
             DateTime endTime = Convert.ToDateTime(dateTimePicker2.Value);
 
-            TimeSpan span = endTime.Subtract(startTime);
+            TimeSpan span = endTime - startTime;
 
             int hourdiff = Convert.ToInt32(span.Hours);
 
             int rates = int.Parse(textBox3.Text);
+
             int totalbal = hourdiff * rates;
 
             txtTotal.Text = totalbal.ToString();

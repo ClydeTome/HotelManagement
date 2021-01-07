@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.amedGrid1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amedGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,13 +43,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Amedities Control";
             // 
-            // dataGridView1
+            // amedGrid1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(35, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(921, 415);
-            this.dataGridView1.TabIndex = 1;
+            this.amedGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.amedGrid1.Location = new System.Drawing.Point(35, 58);
+            this.amedGrid1.Name = "amedGrid1";
+            this.amedGrid1.Size = new System.Drawing.Size(921, 415);
+            this.amedGrid1.TabIndex = 1;
             // 
             // button1
             // 
@@ -67,11 +67,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.amedGrid1);
             this.Controls.Add(this.label1);
             this.Name = "Amedities";
             this.Text = "Amedities";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.amedGrid1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,7 +80,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView amedGrid1;
         private System.Windows.Forms.Button button1;
     }
 }
